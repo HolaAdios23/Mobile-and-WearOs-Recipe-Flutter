@@ -1,12 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dummy_json_recipes/screens/homescreen.dart';
+import 'package:flutter_dummy_json_recipes/screens/tagsscreen.dart';
+import 'package:is_wear/is_wear.dart';
+import 'package:wear_plus/wear_plus.dart';
 
-void main() {
-  runApp(const MyApp());
+final _isWearPlugin = IsWear();
+
+void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  bool isWear = await _isWearPlugin.check()??false;
+  runApp( MyApp(isWear: isWear,));
+
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  final bool isWear;
+  const MyApp({super.key, required this.isWear});
 
   // This widget is the root of your application.
   @override
@@ -17,7 +26,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const Homescreen(),
+      home: isWear? Tagsscreen() : Homescreen(),
     );
   }
 }
