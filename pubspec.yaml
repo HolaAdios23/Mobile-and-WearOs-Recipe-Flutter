@@ -38,6 +38,9 @@ dependencies:
   is_wear: ^0.0.2+3
   wear_plus: ^1.2.3
   flutter_screenutil: ^5.8.4
+  watch_connectivity: ^0.2.1+1
+  shared_preferences: ^2.5.3
+  cached_network_image: ^3.4.1
 
 dev_dependencies:
   flutter_test:
